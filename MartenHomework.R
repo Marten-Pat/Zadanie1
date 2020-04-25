@@ -1,0 +1,145 @@
+#zadanie1
+
+iris
+iris$Sepal.Length
+mean(iris$Sepal.Length)
+a=mean(iris$Sepal.Length)
+a
+
+mean(iris$Sepal.Width)
+b=mean(iris$Sepal.Width)
+b
+
+mean(iris$Petal.Length)
+c=mean(iris$Petal.Length)
+c
+
+mean(iris$Petal.Width)
+d=mean(iris$Petal.Width)
+d
+
+
+list(mean(iris$Sepal.Length),mean(iris$Sepal.Width),mean(iris$Petal.Length),mean(iris$Petal.Width)) 
+
+
+
+#zadanie2
+
+iris
+apply(iris[,1:4],1,mean)
+
+
+
+#zadanie3
+
+dna = c("A","G","T","C")
+
+dna=sample(dna, size = 1000, rep=T)
+
+dna=factor(dna)
+
+summary(dna)/length(dna)
+
+dna_at=c(dna[1],dna[4]); dna_at
+
+dna_at
+
+
+
+#zadanie4
+
+letters
+
+sample(letters,size = 1000, replace = TRUE)
+
+sampleabc = c(sample(letters, size = 1000, replace = TRUE))
+
+summary(sampleabc)
+
+Glasnie = sampleabc[sampleabc %in% c("a","e","i","o","u")] 
+length(Glasnie)
+
+
+
+#zadanie5
+
+iris
+
+setosa=c(iris$Petal.Length[1:50])
+
+versicolor=c(iris$Petal.Length[51:100])
+
+virginica=c(iris$Petal.Length[101:150])
+
+mean(setosa)
+
+mean(versicolor)
+
+mean(virginica)
+
+species=c(mean(setosa),mean(versicolor),mean(virginica))
+
+f=factor(species)
+
+names(f)<-c("setosa","versicolor", "virginica")
+
+f
+
+
+
+#zadanie6
+
+median <- function(x) { 
+  z=sort(x) 
+  if((length(z)%%2)!=0){ 
+    result = z[(length(x)/2)+1] } 
+  else 
+    result = (z[length(x)/2]+z[length(x)/2+1])/2 
+  return(result)} 
+
+#primer
+median(iris$Petal.Length) 
+
+
+#zadanie7.1
+
+iris
+
+x=iris$Sepal.Length[1:50]
+
+y=iris$Petal.Length[1:50]
+
+plot(x,y,main="setosa", xlab="Sepal.Length",ylab="$Petal.Length", col="YELLOW")
+
+
+x=iris$Sepal.Length[51:100]
+
+y=iris$Petal.Length[51:100]
+
+plot(x,y,main="versicolor", xlab="Sepal.Length",ylab="$Petal.Length", col="BLACK")
+
+
+x=iris$Sepal.Length[101:150]
+
+
+y=iris$Petal.Length[101:150]
+plot(x,y,main="virginica", xlab="Sepal.Length",ylab="$Petal.Length", col="PINK")
+
+
+#zadanie8
+
+library("ggplot2")
+diamonds
+
+levels(factor(diamonds$clarity))
+
+x=levels(factor(diamonds$clarity))
+
+y=vector()
+
+for (i in 1:length(x)) {y[i]=mean(diamonds$price[(diamonds$price>1000) & diamonds$clarity==x[i]])}
+
+x
+
+y
+
